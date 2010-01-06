@@ -293,17 +293,17 @@ static unsigned char *KeyExpansion(unsigned char *key, unsigned char *w, int kle
 
 static void AddRoundKey(state_t *state, unsigned char *key, int round)
 {
-	int i, r = round * 16;
+	int i, r = round * 16, n = 0;
 #if 0
 	for (i = 0; i < 4; i++) {
 		*(long*)&(*state)[i] ^= *(long*)&key[r];
 	}
 #else
 	for (i = 0; i < 4; i++) {
-		state[i][j] ^= key[r];
-		state[i][j + 1] ^= key[r + 1];
-		state[i][j + 2] ^= key[r + 2];
-		state[i][j + 3] ^= key[r + 3];
+		int j;
+		for (j = 0; j < 4; j++) {
+			(*state)[i][j] ^= key[r + n++];
+		}
 	}
 #endif
 }
