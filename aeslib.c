@@ -583,3 +583,22 @@ int decryptCBC(unsigned char *input, int len, unsigned char *key, int klen,
 	return 1;
 }
 
+/*
+ * key should not have and \r or \n 
+ * character at the end to ensure compatibility
+ */
+void trimKey(char *key)
+{
+    char *cp = key;
+    char *ep = &key[strlen(key)];
+
+    while(ep > cp) {
+        ep--;
+        if (*ep == 0x0d || *ep == 0x0a) {
+            *ep = 0x00;
+        }
+        else {
+            break;
+        }
+    }
+}

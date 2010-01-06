@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
 	 */
     printf("key>");
     fgets(key, sizeof(key), stdin);
+    trimKey(key);
 
 	/*
 	 * read file header, check magic number

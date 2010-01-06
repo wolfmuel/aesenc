@@ -55,3 +55,8 @@ int encryptCBC(unsigned char *input, int len, unsigned char *key,
 int decryptCBC(unsigned char *input, int len, unsigned char *key, 
                int klen, unsigned char *iv);
 
+/*
+ * key should not have and \r or \n 
+ * character at the end to ensure compatibility
+ */
+void trimKey(char *key);

@@ -23,6 +23,7 @@
 #include <errno.h>
 #include "aeslib.h"
 
+
 /*
  * simple file based encryption tool
  * it uses AES256 for encryption and CBC mode
@@ -66,8 +67,9 @@ int main(int argc, char *argv[])
 	/*
 	 * prompt for key and read it from stdin
 	 */
-    printf("key>");
-    fgets(key, sizeof(key), stdin);
+	printf("key>");
+	fgets(key, sizeof(key), stdin);
+    trimKey(key);
 
 	/*
 	 * output file starts with a 512-byte header
