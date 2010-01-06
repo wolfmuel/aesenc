@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     };
 
     if (argc < 3) {
-        printf("usage: aesafe-enc <infile> <outfile>\n");
+        printf("usage: aesdec <infile> <outfile>\n");
         exit(1);
     }
     

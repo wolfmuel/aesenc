@@ -294,18 +294,13 @@ static unsigned char *KeyExpansion(unsigned char *key, unsigned char *w, int kle
 static void AddRoundKey(state_t *state, unsigned char *key, int round)
 {
 	int i, r = round * 16, n = 0;
-#if 0
-	for (i = 0; i < 4; i++) {
-		*(long*)&(*state)[i] ^= *(long*)&key[r];
-	}
-#else
+
 	for (i = 0; i < 4; i++) {
 		int j;
 		for (j = 0; j < 4; j++) {
 			(*state)[i][j] ^= key[r + n++];
 		}
 	}
-#endif
 }
 
 static inline void SubShiftRows(state_t *state)
